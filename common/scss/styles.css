@@ -1,0 +1,468 @@
+/*
+	CSS Triangle
+	used for creating CSS only triangles
+	example:
+*/
+/*
+	Hide text
+*/
+/*
+	Typography
+	Text image replacement, with responsive ratio
+*/
+@font-face {
+  font-family: "NotoSansKR-Regular";
+  text-transform: normal;
+  font-weight: normal;
+  src: url("../fonts/NotoSansKR-Regular.otf") format("opentype"), url("../fonts/NotoSansKR-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NotoSansKR-Bold";
+  text-transform: normal;
+  font-weight: normal;
+  src: url("../fonts/NotoSansKR-Bold.otf") format("opentype"), url("../fonts/NotoSansKR-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NotoSansKR-Light";
+  text-transform: normal;
+  font-weight: normal;
+  src: url("../fonts/NotoSansKR-Light.otf") format("opentype"), url("../fonts/NotoSansKR-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "NotoSansKR-Black";
+  text-transform: normal;
+  font-weight: normal;
+  src: url("../fonts/NotoSansKR-Black.otf") format("opentype"), url("../fonts/NotoSansKR-Black.ttf") format("truetype");
+}
+@font-face {
+  font-family: "SB_aggro_L";
+  text-transform: normal;
+  font-weight: normal;
+  src: url("../fonts/SB_aggro_L.otf") format("opentype"), url("../fonts/SB_aggro_L.ttf") format("truetype");
+}
+@font-face {
+  font-family: "SB_aggro_M";
+  text-transform: normal;
+  font-weight: normal;
+  src: url("../fonts/SB_aggro_M.otf") format("opentype"), url("../fonts/SB_aggro_M.ttf") format("truetype");
+}
+@font-face {
+  font-family: "SB_aggro_B";
+  text-transform: normal;
+  font-weight: normal;
+  src: url("../fonts/SB_aggro_B.otf") format("opentype"), url("../fonts/SB_aggro_B.ttf") format("truetype");
+}
+@font-face {
+  font-family: "JSArirangHON";
+  text-transform: normal;
+  font-weight: normal;
+  src: url("../fonts/JSArirangHON.otf") format("opentype"), url("../fonts/JSArirangHON.ttf") format("truetype");
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: "SB_aggro_M", Arial, sans-serif;
+  font-size: 2rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+}
+
+div,
+p,
+span,
+input,
+a,
+li {
+  font-family: "NotoSansKR-Regular", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: none;
+  box-sizing: border-box;
+}
+*:before {
+  box-sizing: border-box;
+}
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+a {
+  text-decoration: none !important;
+  color: #000;
+}
+
+button {
+  background-color: transparent;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  box-shadw: none;
+  border: none;
+}
+
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+input.btn--input {
+  position: absolute;
+  opacity: 0;
+}
+input.btn--input + span {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 8px 20px;
+  background-color: #a1e3b0;
+  color: #23aa40;
+  margin-right: 5px;
+}
+input.btn--input:checked ~ span {
+  background-color: #17862f;
+  color: #ffffff;
+}
+
+img {
+  width: 100%;
+}
+
+.container {
+  max-width: 620px;
+  min-height: calc(100% - 27px);
+  margin: 0 auto;
+  padding: 20px 20px 30px;
+  text-align: center;
+  -webkit-animation: name duration timing-function delay iteration-count direction fill-mode;
+          animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+.container--title {
+  font-family: "NotoSansKR-Bold", Arial, sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+footer {
+  width: 100%;
+  background-color: #d9d9d9;
+  padding: 6px 20px;
+  text-align: center;
+}
+footer p {
+  color: #000;
+  font-size: 0.6rem;
+}
+
+.btn {
+  width: 70%;
+  border-radius: 5px;
+  font-family: "NotoSansKR-Bold", Arial, sans-serif;
+  font-weight: 700;
+  padding: 12px 10px;
+  margin: 0 auto 10px;
+}
+.btn:last-child {
+  margin-bottom: 0;
+}
+.btn--type1 {
+  background-color: #17862f;
+  color: #ffffff;
+}
+.btn--type2 {
+  border: 1px solid #17862f;
+}
+.btn--big {
+  min-height: 100px;
+}
+
+.pick {
+  background-color: #23aa40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a1e3b0;
+  font-family: "NotoSansKR-Bold", Arial, sans-serif;
+}
+.pick__wrap {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: 1fr;
+  grid-gap: 10px;
+}
+.pick__wrap::before {
+  content: "";
+  width: 0;
+  padding-bottom: 100%;
+  grid-row: 1/1;
+  grid-column: 1/1;
+}
+.pick__wrap > *:first-child {
+  grid-row: 1/1;
+  grid-column: 1/1;
+}
+.pick--current {
+  border: 3px solid #17862f;
+  color: #ffffff;
+}
+.pick--picked {
+  background-color: #17862f;
+  color: #ffffff;
+}
+.pick-no-match {
+  color: #ff3d00;
+}
+
+.ave-range__result {
+  margin-bottom: 20px;
+}
+.ave-range__result__titles {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.ave-range__result__titles p {
+  position: relative;
+}
+.ave-range__result__titles p.tag-mine::before {
+  content: "MY";
+  width: 12px;
+  height: 12px;
+  color: #ffffff;
+  display: block;
+  background-color: #ff3d00;
+  background-size: 12px 12px;
+  font-size: 5px;
+  border-radius: 12px;
+  line-height: 12px;
+  position: absolute;
+  right: -20px;
+  top: 6px;
+}
+.ave-range__result__titles p:last-child.tag-mine::before {
+  right: initial;
+  left: -20px;
+}
+.ave-range__bar {
+  position: relative;
+  background-color: #a1e3b0;
+  overflow: hidden;
+}
+.ave-range__bar .move-bar {
+  width: 59.2%;
+  height: 100%;
+  min-height: 24px;
+  background-color: #17862f;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ave-range__bar__text {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+.ave-range__bar__text-l {
+  color: #ffffff;
+  padding-left: 10px;
+}
+.ave-range__bar__text-r {
+  padding-right: 10px;
+}
+
+.accumulate__text {
+  font-size: 0.7rem !important;
+  margin-bottom: 12px;
+}
+.accumulate__text span {
+  font-size: 0.7rem;
+}
+
+.match {
+  font-family: "NotoSansKR-Regular", Arial, sans-serif;
+  margin-top: 24px;
+}
+.match span {
+  color: #17862f;
+  font-size: 1.5rem;
+  font-family: "NotoSansKR-Bold", Arial, sans-serif;
+}
+
+.index .title {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+.index .title__text {
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+.index .count {
+  background-color: #23aa40;
+  border-radius: 6px;
+  padding: 12px 18px;
+  margin-bottom: 35px;
+}
+.index .count > div {
+  color: #ffffff;
+}
+.index .count__text {
+  font-weight: 700;
+}
+.index .count__number {
+  font-size: 3rem;
+  font-weight: 500;
+}
+.index .count__korea {
+  font-family: "NotoSansKR-Light", Arial, sans-serif;
+  font-weight: 400;
+}
+
+.pages {
+  padding: 20px;
+}
+.pages .text__wrap {
+  font-family: "JSArirangHON", Arial, sans-serif;
+  font-size: 1.5rem;
+  margin: 64px auto 53px;
+}
+.pages .btn {
+  font-family: "NotoSansKR-Bold", Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  padding: 20px 10px;
+}
+.pages .btn--wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.pages .btn--wrap p {
+  min-width: 30px;
+  font-family: "NotoSansKR-Bold", Arial, sans-serif;
+  font-size: 1.3rem;
+  margin: 0 13px;
+}
+
+.survey--main {
+  margin: 35px 0 40px;
+}
+.survey--main--q {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+}
+.survey--main--q p {
+  font-family: "NotoSansKR-Regular", Arial, sans-serif;
+  margin-right: 10px;
+  line-height: 50px;
+  word-break: keep-all;
+}
+.survey--main--q .input--wrap {
+  line-height: 50px;
+}
+.survey--main--q2 {
+  display: block;
+  text-align: left;
+}
+.survey--main--q2 > p,
+.survey--main--q2 div {
+  display: inline;
+}
+.survey .btn {
+  width: auto;
+  font-family: "NotoSansKR-Regular", Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  padding: 20px 10px;
+}
+.survey .btn--wrap {
+  display: block;
+  margin: 0 auto;
+}
+.survey .btn--wrap .btn--input {
+  width: 100%;
+}
+.survey .discription {
+  font-size: 0.9rem;
+}
+
+.mine--main > p {
+  font-size: 0.9rem;
+  margin-top: 24px;
+}
+.mine .share {
+  margin-top: 24px;
+}
+.mine .share--title {
+  font-family: "NotoSansKR-Bold", Arial, sans-serif;
+  font-size: 1.3rem;
+}
+.mine .share--icons {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.mine .share--icon {
+  width: 40px;
+  height: 40px;
+  margin: 15px 10px;
+}
+.mine .input--wrap {
+  margin-top: 48px;
+}
+.mine .input--wrap .label--wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.mine .input--wrap .label--wrap label {
+  width: 30%;
+}
+.mine .input--wrap .label--wrap label span {
+  width: 100%;
+  margin-right: 10px;
+}
+.mine .input--wrap .label--wrap label:last-child span {
+  margin-right: 0;
+}
+.mine .input--title {
+  width: 100%;
+  font-family: "NotoSansKR-Bold", Arial, sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.average .accumulate__text {
+  margin-top: 10px;
+}
+
+.share .container--title {
+  margin-top: 22px;
+}
+.share .accumulate__text {
+  margin-top: 10px;
+}

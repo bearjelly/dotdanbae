@@ -1,0 +1,70 @@
+// Font Type
+// $header_l: 'GenesisSansHead-Light', Arial, sans-serif;
+// $header_R: 'GenesisSansHead-Regular', Arial, sans-serif;
+$base_ff: "NotoSansKR-Regular", Arial, sans-serif;
+
+$base_b_ff: "NotoSansKR-Bold", Arial, sans-serif;
+
+$base_l_ff: "NotoSansKR-Light", Arial, sans-serif;
+
+$base_eb_ff: "NotoSansKR-Black", Arial, sans-serif;
+
+$point_l_ff: "SB_aggro_L", Arial, sans-serif;
+
+$point_m_ff: "SB_aggro_M", Arial, sans-serif;
+
+$point_b_ff: "SB_aggro_B", Arial, sans-serif;
+
+$point2_ff: "JSArirangHON", Arial, sans-serif;
+
+// Font Size
+$small-fz: 12px; //20pt
+$base-fz: 16px; //guide: 30pt
+$big-fz: 24px; //50pt
+$big-fz: 35px;
+// ==========================================================
+// Font type
+// ==========================================================
+@include font-face(
+  "NotoSansKR-Regular",
+  fonts/NotoSansKR-Regular,
+  normal,
+  normal
+);
+@include font-face("NotoSansKR-Bold", fonts/NotoSansKR-Bold, normal, normal);
+@include font-face("NotoSansKR-Light", fonts/NotoSansKR-Light, normal, normal);
+@include font-face("NotoSansKR-Black", fonts/NotoSansKR-Black, normal, normal);
+@include font-face("SB_aggro_L", fonts/SB_aggro_L, normal, normal);
+@include font-face("SB_aggro_M", fonts/SB_aggro_M, normal, normal);
+@include font-face("SB_aggro_B", fonts/SB_aggro_B, normal, normal);
+@include font-face("JSArirangHON", fonts/JSArirangHON, normal, normal);
+
+// ==========================================================
+// Font
+// ==========================================================
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $point_m_ff;
+  font-size: 2rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+}
+
+div,
+p,
+span,
+input,
+a,
+li {
+  font-family: $base_ff;
+  font-size: $base-fz;
+  line-height: 1.5;
+  word-break: break-word;
+}

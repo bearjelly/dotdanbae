@@ -1,0 +1,25 @@
+////////////////////////
+// Style File
+//
+// This file gets turned into style.css. This file should really hold nothing except for imports of your base, style guide, layout, and design partials.
+////////////////////////
+
+////////////////////////
+// Base Import
+////////////////////////
+@import "partials/global/base";
+
+////////////////////////
+// Import Layout
+////////////////////////
+@import "partials/layout/layout";
+
+////////////////////////
+// Import Design
+////////////////////////
+@import "partials/pages/index";
+@import "partials/pages/pages";
+@import "partials/pages/survey";
+@import "partials/pages/mine";
+@import "partials/pages/average";
+@import "partials/pages/share";

@@ -1,0 +1,55 @@
+.mine {
+  &--main {
+    > p {
+      font-size: 0.9rem;
+      margin-top: 24px;
+    }
+  }
+
+  .share {
+    margin-top: 24px;
+    &--title {
+      font-family: $base_b_ff;
+      font-size: 1.3rem;
+    }
+    &--icons {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+    }
+    &--icon {
+      width: 40px;
+      height: 40px;
+      margin: 15px 10px;
+    }
+  }
+
+  .input {
+    &--wrap {
+      margin-top: 48px;
+      .label--wrap {
+        display: flex;
+        justify-content: space-between;
+        label {
+          width: 30%;
+          span {
+            width: 100%;
+            margin-right: 10px;
+          }
+
+          &:last-child {
+            span {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+    &--title {
+      width: 100%;
+      font-family: $base_b_ff;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+  }
+}

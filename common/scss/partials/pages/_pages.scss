@@ -1,0 +1,32 @@
+.pages {
+  padding: 20px;
+
+  .text {
+    &__wrap {
+      font-family: $point2_ff;
+      font-size: 1.5rem;
+      margin: 64px auto 53px;
+    }
+  }
+
+  .btn {
+    &--wrap {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        min-width: 30px;
+        font-family: $base_b_ff;
+        font-size: 1.3rem;
+        margin: 0 13px;
+      }
+    }
+    font-family: $base_b_ff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    padding: 20px 10px;
+  }
+}

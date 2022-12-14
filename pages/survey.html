@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimal-ui"
+    />
+    <title></title>
+    <link rel="stylesheet" href="../common/scss/styles.css" />
+    <script src="../common/js/lib/jquery3.5.1.min.js"></script>
+    <script src="../common/js/lib/fontawesome.min.js"></script>
+    <script src="../common/js/common.js"></script>
+  </head>
+
+  <body>
+    <div class="container survey">
+      <div class="pick__wrap">
+        <!-- 현재 질문 단계표 pick--current & 이미 답변한 답표기 pick--picked -->
+        <div class="pick pick1 pick--picked">짜</div>
+        <div class="pick pick2 pick--picked">부</div>
+        <div class="pick pick3 pick--picked">김</div>
+        <div class="pick pick4 pick--picked">후</div>
+        <div class="pick pick5 pick--picked">물</div>
+        <div class="pick pick6 pick--picked">콜</div>
+        <div class="pick pick7 pick--picked">쌀</div>
+        <div class="pick pick8 pick--picked">카</div>
+        <div class="pick pick9 pick--picked">토</div>
+        <div class="pick pick10 pick--picked">슈</div>
+        <div class="pick pick11 pick--picked">단</div>
+        <div class="pick pick12 pick--picked">족</div>
+        <div class="pick pick13 pick--picked">묵</div>
+        <div class="pick pick14 pick--picked">고</div>
+        <div class="pick pick15 pick--picked">감</div>
+        <div class="pick pick16 pick--picked">버</div>
+      </div>
+
+      <div class="survey--main">
+        <div class="survey--main--q survey--main--q1">
+          <p>나는</p>
+          <div class="input--wrap">
+            <label for="male">
+              <input
+                type="radio"
+                name="gender"
+                id="male"
+                class="btn--input"
+                value="남자"
+              />
+              <span>남자</span>
+            </label>
+
+            <label for="female">
+              <input
+                type="radio"
+                name="gender"
+                id="female"
+                class="btn--input"
+                value="여자"
+              />
+              <span>여자</span>
+            </label>
+          </div>
+          <p>입니다.</p>
+        </div>
+        <div class="survey--main--q survey--main--q2">
+          <p>내 나이는</p>
+          <div class="input--wrap">
+            <label for="age-10">
+              <input
+                type="radio"
+                name="age"
+                id="age-10"
+                class="btn--input"
+                value="10대 이하"
+              />
+              <span>10대 이하</span>
+            </label>
+
+            <label for="age-20">
+              <input
+                type="radio"
+                name="age"
+                id="age-20"
+                class="btn--input"
+                value="20대"
+              />
+              <span>20대</span>
+            </label>
+
+            <label for="age-30">
+              <input
+                type="radio"
+                name="age"
+                id="age-30"
+                class="btn--input"
+                value="30"
+              />
+              <span>30대</span>
+            </label>
+
+            <label for="age-40">
+              <input
+                type="radio"
+                name="age"
+                id="age-40"
+                class="btn--input"
+                value="40"
+              />
+              <span>40대</span>
+            </label>
+
+            <label for="age-50">
+              <input
+                type="radio"
+                name="age"
+                id="age-50"
+                class="btn--input"
+                value="50"
+              />
+              <span>50대</span>
+            </label>
+
+            <label for="age-60">
+              <input
+                type="radio"
+                name="age"
+                id="age-60"
+                class="btn--input"
+                value="60"
+              />
+              <span>60대</span>
+            </label>
+
+            <label for="age-70">
+              <input
+                type="radio"
+                name="age"
+                id="age-70"
+                class="btn--input"
+                value="70"
+              />
+              <span>70대 이상</span>
+            </label>
+          </div>
+          <p>입니다.</p>
+        </div>
+      </div>
+
+      <div class="btn--wrap">
+        <button
+          class="btn btn--type1 btn-submit"
+          data-value="버"
+          next-page="mine.html"
+        >
+          👅 내 입맛 제출하고 결과 보기
+        </button>
+      </div>
+      <p class="discription">
+        성별, 나이 정보는 세부 통계 결과를 확인하기 위해서만 활용됩니다.
+        흥미로운 결과를 위해 성별과 나이를 선택해주시길 추천드립니다.
+      </p>
+    </div>
+
+    <footer>
+      <p>copyright (c) 2022. Team Dotanbae. All rights reserved</p>
+    </footer>
+  </body>
+</html>

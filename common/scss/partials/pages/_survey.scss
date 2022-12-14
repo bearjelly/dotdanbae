@@ -1,0 +1,51 @@
+.survey {
+  &--main {
+    margin: 35px 0 40px;
+  }
+  &--main--q {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+
+    $line-height: 50px;
+    p {
+      font-family: $base_ff;
+      margin-right: 10px;
+      line-height: $line-height;
+      word-break: keep-all;
+    }
+
+    .input--wrap {
+      line-height: $line-height;
+    }
+  }
+
+  &--main--q2 {
+    display: block;
+    text-align: left;
+    > p,
+    div {
+      display: inline;
+    }
+  }
+
+  .btn {
+    width: auto;
+    font-family: $base_ff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    padding: 20px 10px;
+  }
+  .btn--wrap {
+    display: block;
+    margin: 0 auto;
+    .btn--input {
+      width: 100%;
+    }
+  }
+
+  .discription {
+    font-size: 0.9rem;
+  }
+}

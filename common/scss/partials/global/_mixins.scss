@@ -1,0 +1,564 @@
+// ==========================================================
+// Font Face
+// ==========================================================
+
+@mixin font-face(
+  $name,
+  $path,
+  $transform: null,
+  $weight: null,
+  $exts: otf ttf
+) {
+  $src: null;
+
+  $extmods: (
+    // eot: "?#iefix",
+    // svg: "#" + str-replace($name, " ", "_")
+  );
+
+  $formats: (
+    otf: "opentype",
+    ttf: "truetype",
+  );
+
+  @each $ext in $exts {
+    $extmod: if(
+      map-has-key($extmods, $ext),
+      $ext + map-get($extmods, $ext),
+      $ext
+    );
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append(
+      $src,
+      url(quote("../" + $path + "." + $extmod)) format(quote($format)),
+      comma
+    );
+  }
+
+  @font-face {
+    font-family: quote($name);
+    text-transform: $transform;
+    font-weight: $weight;
+    src: $src;
+  }
+}
+
+// General Purpose Mixins
+@mixin reset-margins {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin clearposition {
+  position: inherit;
+  bottom: inherit;
+  top: inherit;
+  left: inherit;
+  right: inherit;
+  transform: inherit;
+}
+
+/////////////////////////////////////////
+//claire's mixin
+////////////////////////////////////////
+// px to %
+@function decimal-round($number, $digits: 2, $mode: round) {
+  $n: 1;
+
+  // $number must be a number
+  @if type-of($number) !=number {
+    @warn '#{ $number } is not a number.';
+    @return $number;
+  }
+
+  // $digits must be a unitless number
+  @if type-of($digits) !=number {
+    @warn '#{ $digits } is not a number.';
+    @return $number;
+  } @else if not unitless($digits) {
+    @warn '#{ $digits } has a unit.';
+    @return $number;
+  }
+
+  @if $digits>0 {
+    @for $i from 1 through $digits {
+      $n: $n * 10;
+    }
+  }
+
+  @if $mode==round {
+    @return round($number * $n) / $n;
+  } @else if $mode==ceil {
+    @return ceil($number * $n) / $n;
+  } @else if $mode==floor {
+    @return floor($number * $n) / $n;
+  } @else {
+    @warn '#{ $mode } is undefined keyword.';
+    @return $number;
+  }
+}
+
+// px to % (x-axis)
+@function percent-x($pixel, $total: 750px) {
+  $width: $total;
+  @return decimal-round(percentage($pixel / $width));
+}
+
+// px to % (y-axis)
+@function percent-y($pixel, $total: 1156px) {
+  $height: $total;
+  @return decimal-round(percentage($pixel / $height));
+}
+
+// font calc (from px)
+@function rem($pixels) {
+  @return #{($pixels / 2) / 10}rem;
+}
+
+//:before & :after
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+//When using ::before and ::after you'll always need these three
+
+//scalable elements
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+  $padding: unquote(($y / $x) * 100 + "%");
+
+  @if $pseudo {
+    &::before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+// creating scalable elements (usually images / background images) that maintain a ratio. use it like below.
+// div {
+//     @include responsive-ratio(16,9);
+// }
+
+//formats style
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+// you have to set the style in all the separate formats. use it like below.
+// input,  textarea {
+//     @include input-placeholder {
+//         color: $grey;
+//     }
+// }
+
+//media query
+$breakpoints: (
+  "phone-small": 320px,
+  "phone": 360px,
+  "phone-wide": 414px,
+  "phablet": 560px,
+  "tablet-small": 640px,
+  "tablet": 768px,
+  "tablet-wide": 1024px,
+  "desktop": 1248px,
+  "desktop-wide": 1440px,
+);
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+
+    @if $type==max {
+      $width: $width - 1px;
+    }
+
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+//some default breakpoints setup that work  use it like below.
+// .site-header {
+//     padding: 2rem;
+//     font-size: 1.8rem;
+//     @include mq('tablet-wide') {
+//         padding-top: 4rem;
+//         font-size: 2.4rem;
+//     }
+// }
+
+//z-index
+@function z($name) {
+  @if index($z-indexes, $name) {
+    @return (length($z-indexes) - index($z-indexes, $name))+1;
+  } @else {
+    @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes}';
+    @return null;
+  }
+}
+
+$z-indexes: (
+  "outdated-browser",
+  "modal",
+  "site-header",
+  "page-wrapper",
+  "site-footer"
+);
+
+//store z-indexs in one place for easy editing/recording. name it the same as your class and add in it into your variables/setting file. use it like below.
+// .site-header {
+//     z-index: z('site-header');
+// }
+
+//center1
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+//To quickly centre a block element
+
+//center2 with position
+@mixin center($position) {
+  position: absolute;
+
+  @if $position== "vertical" {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  } @else if $position== "horizontal" {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  } @else if $position== "both" {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+// Define vertical, horizontal, or both position at the center. use it like below.
+// .foo {
+//   @include center(both);
+// }
+
+//position style
+@mixin position($position, $args) {
+  @each $o in top right bottom left {
+    $i: index($args, $o);
+
+    @if $i and $i + 1 <=length($args) and type-of(nth($args, $i + 1)) ==number {
+      #{$o}: nth($args, $i + 1);
+    }
+  }
+
+  position: $position;
+}
+
+// Positioning helpers
+@mixin absolute($args: "") {
+  @include position(absolute, $args);
+}
+
+@mixin fixed($args: "") {
+  @include position(fixed, $args);
+}
+
+@mixin relative($args: "") {
+  @include position(relative, $args);
+}
+
+//Easy and quick CSS positioning. use it like below.
+// .menu li {
+//   @include absolute(top 100% left 0);
+// }
+
+//animation keyframes
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+//Animation mixin setup. use it like below.
+
+// Define animation name, and properties
+// @include keyframes(fade-out) {
+//   0% { opacity: 1; }
+//   90% { opacity: 0; }
+// }
+// Add animation to element
+// .element {
+//   width: 100px;
+//   height: 100px;
+//   background: black;
+//   @include animation('fade-out 5s 3');
+// }
+
+//gradient
+@mixin background-gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+
+  @if $orientation== "vertical" {
+    background: -webkit-linear-gradient(top, $start-color, $end-color);
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  } @else if $orientation== "horizontal" {
+    background: -webkit-linear-gradient(left, $start-color, $end-color);
+    background: linear-gradient(to right, $start-color, $end-color);
+  } @else {
+    background: -webkit-radial-gradient(
+      center,
+      ellipse cover,
+      $start-color,
+      $end-color
+    );
+    background: radial-gradient(ellipse at center, $start-color, $end-color);
+  }
+}
+
+//Quick gradients.  use it like below.
+//$start-color, $end-color, $orientation - vertical/horizontal/radial
+// .foo {
+//    @include background-gradient(red, black, 'vertical');
+//  }
+
+// Simple and effective for when you need to trigger hardware acceleration for some animation, keeping everything fast, slick and flicker-free.
+@mixin hardware($backface: true, $perspective: 1000) {
+  @if $backface {
+    backface-visibility: hidden;
+  }
+
+  perspective: $perspective;
+}
+
+// Adding Truncation to an element isn't as simple as it should be, although it is with this handy time saver, meaning when you include the mixin, you only have to specify your boundry with a max width value, happy days!
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// .title_text {
+//     @include truncate(50px);
+// }
+
+/*
+	CSS Triangle
+	used for creating CSS only triangles
+	example:
+*/
+
+@mixin css-triangle(
+  $color,
+  $direction,
+  $size: 6px,
+  $position: absolute,
+  $round: false
+) {
+  @include pseudo($pos: $position);
+  width: 0;
+  height: 0;
+
+  @if $round {
+    border-radius: 3px;
+  }
+
+  @if $direction==down {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+    margin-top: 0 - round($size / 2.5);
+  } @else if $direction==up {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+    margin-bottom: 0 - round($size / 2.5);
+  } @else if $direction==right {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    margin-right: -$size;
+  } @else if $direction==left {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    margin-left: -$size;
+  }
+}
+
+// .element {
+//     &::before {
+//         @include css-triangle(blue, down);
+//     }
+// }
+
+/*
+	Hide text
+*/
+
+@mixin hide-text(
+  $break: false,
+  $indent: 200%,
+  $align: left,
+  $overflow: hidden
+) {
+  @if $break {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+
+  text: {
+    indent: $indent;
+    align: $align;
+  }
+
+  font-size: 0;
+  white-space: nowrap;
+
+  @if $overflow {
+    overflow: $overflow;
+  }
+}
+
+// .element {
+//     @include hide-text;
+// }
+
+/*
+	Typography
+	Text image replacement, with responsive ratio
+*/
+
+@mixin typography($w, $h, $file, $type: png, $overflow: hidden) {
+  @include responsive-ratio($w, $h, true);
+  position: relative;
+  max-width: $w * 1px;
+  background: url("/common/images/#{$file}.#{$type}") 50% 50% no-repeat;
+  background-size: contain;
+
+  span {
+    @include hide-text(true, $overflow: $overflow);
+  }
+}
+
+// 	<h1 class="element">
+// 		<span>Text to replace</span>
+// 	</h1>
+// 	example:
+// 	.element {
+// 		@include typography(200, 50, 'hello-world');
+// 	}
+
+@mixin fp(
+  $property,
+  $min,
+  $max,
+  $start: 375,
+  $end: $breakpoint("desktop"),
+  $clip: true,
+  $clipAtStart: true,
+  $clipAtEnd: true
+) {
+  $start: $start / ($start * 0 + 1);
+  $end: $end / ($end * 0 + 1);
+  $multiplier: ($max - $min) / ($end - $start) * 100;
+  $adder: ($min * $end - $max * $start) / ($end - $start);
+  $formula: calc(#{$multiplier + 0vw} + #{$adder + 0px});
+
+  @if $clip and $clipAtStart {
+    @media (max-width: #{$start + 0px}) {
+      #{$property}: $min + 0px;
+    }
+  }
+
+  @if $clip and $clipAtEnd {
+    @media (min-width: #{$end + 0px}) {
+      #{$property}: $max + 0px;
+    }
+  }
+
+  #{$property}: $formula;
+}
+
+@mixin animation-move($name, $from, $to) {
+  @keyframes #{$name} {
+    0% {
+      transform: translate3d($from, 0, 0);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translate3d($to, 0, 0);
+      opacity: 1;
+    }
+  }
+}
