@@ -313,6 +313,7 @@ footer p {
 .index .title {
   font-size: 4rem;
   margin-bottom: 16px;
+  margin-top: 60px;
 }
 .index .title__text {
   font-size: 0.9rem;
