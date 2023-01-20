@@ -10,7 +10,22 @@
     <link rel="stylesheet" href="../common/scss/styles.css" />
     <script src="../common/js/lib/jquery3.5.1.min.js"></script>
     <script src="../common/js/lib/fontawesome.min.js"></script>
+    <script src="../common/js/html2canvas.js"></script>
     <script src="../common/js/common.js"></script>
+    <script>
+      function image_download() {
+        $("#id_div_share").show();
+        html2canvas($("#id_div_share")[0]).then(function(canvas){
+          var myImage = canvas.toDataURL("image/png");
+          var link = document.createElement("a")
+          link.download = "arrange.png";
+          link.href = myImage;
+          document.body.appendChild(link);
+          link.click();
+          $("#id_div_share").hide();
+        });
+      }
+    </script>
   </head>
 
   <body>
@@ -58,7 +73,7 @@
               <img src="../common/images/icon/facebook.svg" alt="" />
             </div>
             <div class="share--icon">
-              <img src="../common/images/icon/download.svg" alt="" />
+              <img src="../common/images/icon/download.svg" alt="" onclick="image_download()"/>
             </div>
           </div>
         </div>
@@ -364,6 +379,61 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="container share" id="id_div_share" style="display:none">
+      <h3 class="container--title">나의 입맛</h3>
+      <div class="pick__wrap">
+        <!-- 현재 질문 단계표 pick--current & 이미 답변한 답표기 pick--picked -->
+        <div class="pick pick1 pick--picked">짜</div>
+        <div class="pick pick2 pick--picked">부</div>
+        <div class="pick pick3 pick--picked">김</div>
+        <div class="pick pick4 pick--picked">후</div>
+        <div class="pick pick5 pick--picked">물</div>
+        <div class="pick pick6 pick--picked">콜</div>
+        <div class="pick pick7 pick--picked">쌀</div>
+        <div class="pick pick8 pick--picked">카</div>
+        <div class="pick pick9 pick--picked">토</div>
+        <div class="pick pick10 pick--picked">슈</div>
+        <div class="pick pick11 pick--picked">단</div>
+        <div class="pick pick12 pick--picked">족</div>
+        <div class="pick pick13 pick--picked">묵</div>
+        <div class="pick pick14 pick--picked">고</div>
+        <div class="pick pick15 pick--picked">감</div>
+        <div class="pick pick16 pick--picked">버</div>
+      </div>
+
+      <div class="share--main">
+        <p class="match">
+          🇰🇷 대한민국 평균 입맛과 <span>75%</span> 일치합니다.
+        </p>
+
+        <h3 class="container--title">🇰🇷 대한민국 평균 입맛</h3>
+        <div class="pick__wrap">
+          <!-- 현재 질문 단계표 pick--current & 이미 답변한 답표기 pick--picked -->
+          <div class="pick pick1 pick--picked">짜</div>
+          <div class="pick pick2 pick--picked pick-no-match">찍</div>
+          <div class="pick pick3 pick--picked">김</div>
+          <div class="pick pick4 pick--picked">후</div>
+          <div class="pick pick5 pick--picked">물</div>
+          <div class="pick pick6 pick--picked">콜</div>
+          <div class="pick pick7 pick--picked pick-no-match">밀</div>
+          <div class="pick pick8 pick--picked">카</div>
+          <div class="pick pick9 pick--picked">토</div>
+          <div class="pick pick10 pick--picked">슈</div>
+          <div class="pick pick11 pick--picked">단</div>
+          <div class="pick pick12 pick--picked">족</div>
+          <div class="pick pick13 pick--picked pick-no-match">겉</div>
+          <div class="pick pick14 pick--picked">고</div>
+          <div class="pick pick15 pick--picked pick-no-match">고</div>
+          <div class="pick pick16 pick--picked">버</div>
+        </div>
+
+        <p class="accumulate__text">
+          <span>2022년 11월 19일 오후 9시 21분</span> 기준. 전체 누적 참여자:
+          <span>12039</span>명<br />통계는 누적 참여에 따라 결과가 변동됩니다.
+        </p>
       </div>
     </div>
 
