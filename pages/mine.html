@@ -15,9 +15,9 @@
     <script>
       function image_download() {
         $("#id_div_share").show();
-        html2canvas($("#id_div_share")[0]).then(function(canvas){
+        html2canvas($("#id_div_share")[0]).then(function (canvas) {
           var myImage = canvas.toDataURL("image/png");
-          var link = document.createElement("a")
+          var link = document.createElement("a");
           link.download = "arrange.png";
           link.href = myImage;
           document.body.appendChild(link);
@@ -73,7 +73,11 @@
               <img src="../common/images/icon/facebook.svg" alt="" />
             </div>
             <div class="share--icon">
-              <img src="../common/images/icon/download.svg" alt="" onclick="image_download()"/>
+              <img
+                src="../common/images/icon/download.svg"
+                alt=""
+                onclick="image_download()"
+              />
             </div>
           </div>
         </div>
@@ -382,7 +386,7 @@
       </div>
     </div>
 
-    <div class="container share" id="id_div_share" style="display:none">
+    <div class="container share" id="id_div_share" style="display: none">
       <h3 class="container--title">나의 입맛</h3>
       <div class="pick__wrap">
         <!-- 현재 질문 단계표 pick--current & 이미 답변한 답표기 pick--picked -->
@@ -438,7 +442,7 @@
     </div>
 
     <footer>
-      <p>copyright (c) 2022. Team Dotanbae. All rights reserved</p>
+      <p>copyright (c) 2023. Team Dotanbae. All rights reserved</p>
     </footer>
   </body>
 </html>

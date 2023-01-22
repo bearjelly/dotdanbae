@@ -197,29 +197,25 @@ footer p {
 }
 
 .pick {
+  width: calc((100% - 70px) / 8);
   background-color: #23aa40;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: #a1e3b0;
   font-family: "NotoSansKR-Bold", Arial, sans-serif;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding: 4px;
 }
 .pick__wrap {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-auto-rows: 1fr;
-  grid-gap: 10px;
+  display: flex;
+  flex-flow: row wrap;
 }
-.pick__wrap::before {
-  content: "";
-  width: 0;
-  padding-bottom: 100%;
-  grid-row: 1/1;
-  grid-column: 1/1;
+@media only screen and (min-width: 360px) {
+  .pick {
+    padding: 6px;
+  }
 }
-.pick__wrap > *:first-child {
-  grid-row: 1/1;
-  grid-column: 1/1;
+.pick:first-child, .pick:nth-child(9) {
+  margin-left: 0;
 }
 .pick--current {
   border: 3px solid #17862f;
@@ -394,12 +390,13 @@ footer p {
   display: inline;
 }
 .survey .btn {
+  display: inline-block;
   width: auto;
   font-family: "NotoSansKR-Regular", Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 12px;
-  padding: 20px 10px;
+  padding: 20px 15px;
 }
 .survey .btn--wrap {
   display: block;
@@ -409,7 +406,7 @@ footer p {
   width: 100%;
 }
 .survey .discription {
-  font-size: 0.9rem;
+  font-size: 0.6rem;
 }
 
 .mine--main > p {
