@@ -238,6 +238,22 @@ footer p {
   color: #ff3d00;
 }
 
+.ave-range__state {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.ave-range__state > div {
+  font-family: "NotoSansKR-Bold", Arial, sans-serif;
+  font-size: 1.25rem;
+}
+.ave-range__state .win {
+  color: #17862f;
+}
+.ave-range__state .lose {
+  color: #a1e3b0;
+}
 .ave-range__result {
   margin-bottom: 20px;
 }
@@ -313,6 +329,10 @@ footer p {
   color: #17862f;
   font-size: 1.5rem;
   font-family: "NotoSansKR-Bold", Arial, sans-serif;
+}
+
+.url {
+  margin-top: 12px;
 }
 
 .index .title {

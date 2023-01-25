@@ -201,6 +201,22 @@ footer {
 }
 
 .ave-range {
+  &__state {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    > div {
+      font-family: $base_b_ff;
+      font-size: 1.25rem;
+    }
+    .win {
+      color: $green;
+    }
+    .lose {
+      color: $green_l2;
+    }
+  }
   &__result {
     margin-bottom: 20px;
   }
@@ -288,4 +304,8 @@ footer {
     font-size: 1.5rem;
     font-family: $base_b_ff;
   }
+}
+
+.url {
+  margin-top: 12px;
 }
