@@ -63,7 +63,7 @@ h2,
 h3,
 h4 {
   font-family: "SB_aggro_M", Arial, sans-serif;
-  font-size: 2rem;
+  font-size: 2.25rem;
   margin: 0;
   line-height: 1.5;
 }
@@ -148,6 +148,12 @@ img {
   width: 100%;
 }
 
+.title-2 {
+  margin-top: 50px;
+  text-align: center;
+  line-height: 1;
+}
+
 .container {
   max-width: 620px;
   min-height: calc(100% - 27px);
@@ -194,6 +200,9 @@ footer p {
 }
 .btn--big {
   min-height: 100px;
+}
+.btn-home {
+  margin: 20px 0 25px;
 }
 
 .pick {
@@ -328,6 +337,12 @@ footer p {
   font-weight: 700;
 }
 .index .count__number {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.index .count__number > div,
+.index .count__number p {
   font-size: 3rem;
   font-weight: 500;
 }
@@ -428,7 +443,8 @@ footer p {
 .mine .share--icon {
   width: 40px;
   height: 40px;
-  margin: 15px 10px;
+  box-sizing: initial;
+  padding: 15px 20px;
 }
 .mine .input--wrap {
   margin-top: 48px;
@@ -458,9 +474,6 @@ footer p {
   margin-top: 10px;
 }
 
-.share .container--title {
-  margin-top: 22px;
-}
 .share .accumulate__text {
   margin-top: 10px;
 }

@@ -22,8 +22,16 @@
       font-weight: 700;
     }
     &__number {
-      font-size: 3rem;
-      font-weight: 500;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      > div,
+      p {
+        font-size: 3rem;
+        font-weight: 500;
+      }
+      &-text {
+      }
     }
     &__korea {
       font-family: $base_l_ff;
