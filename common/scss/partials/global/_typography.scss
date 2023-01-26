@@ -67,4 +67,7 @@ li {
   font-size: $base-fz;
   line-height: 1.5;
   word-break: break-word;
+  &.text-bold {
+    font-family: $base_b_ff;
+  }
 }

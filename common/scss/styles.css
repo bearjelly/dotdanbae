@@ -83,6 +83,14 @@ li {
   line-height: 1.5;
   word-break: break-word;
 }
+div.text-bold,
+p.text-bold,
+span.text-bold,
+input.text-bold,
+a.text-bold,
+li.text-bold {
+  font-family: "NotoSansKR-Bold", Arial, sans-serif;
+}
 
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -207,12 +215,13 @@ footer p {
 
 .pick {
   width: calc((100% - 70px) / 8);
+  height: 30px;
+  line-height: 30px;
   background-color: #23aa40;
   color: #a1e3b0;
   font-family: "NotoSansKR-Bold", Arial, sans-serif;
   margin-left: 10px;
   margin-bottom: 10px;
-  padding: 4px;
 }
 .pick__wrap {
   display: flex;
@@ -220,7 +229,8 @@ footer p {
 }
 @media only screen and (min-width: 360px) {
   .pick {
-    padding: 6px;
+    height: 36px;
+    line-height: 36px;
   }
 }
 .pick:first-child, .pick:nth-child(9) {
@@ -447,6 +457,9 @@ footer p {
 .mine--main > p {
   font-size: 0.9rem;
   margin-top: 24px;
+}
+.mine--main > p .text-bold {
+  font-size: 0.9rem;
 }
 .mine .share {
   margin-top: 24px;
