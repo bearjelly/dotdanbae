@@ -436,6 +436,8 @@ footer p {
 }
 .survey .btn {
   display: inline-block;
+  white-space: nowrap;
+  text-align: center;
   width: 278px;
   font-family: "NotoSansKR-Regular", Arial, sans-serif;
   font-size: 1.25rem;
