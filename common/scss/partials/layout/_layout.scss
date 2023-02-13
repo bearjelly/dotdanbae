@@ -296,3 +296,108 @@ footer {
 .url {
   margin-top: 12px;
 }
+
+// footer animation
+
+.ocean {
+  height: 40px;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  &-view {
+    background: linear-gradient(to bottom, #8fdced 25%, #7fcdff, #357a9b);
+    width: 1250px;
+    height: 100%;
+    position: relative;
+
+    .wave {
+      background: rgba(24, 138, 200, 0.52);
+      border-radius: 1000% 1000% 0 0;
+      box-shadow: 0px 0px 5px rgba(219, 235, 250, 0.7);
+      width: 1500px;
+      height: 45%;
+      opacity: 0.9;
+      position: absolute;
+      left: -5%;
+      &:nth-child(1n) {
+        bottom: 10px;
+        animation: wave 18s ease-in-out reverse infinite;
+        opacity: 0.8;
+      }
+
+      &:nth-child(2n) {
+        bottom: 5px;
+        left: -30%;
+        animation: wave2 20s -1s reverse infinite;
+      }
+      &:nth-child(3n) {
+        bottom: 0px;
+        left: -10%;
+        animation: wave3 20s -1s reverse infinite;
+      }
+    }
+
+    @keyframes wave {
+      0% {
+        transform: translate(-10%, 52%);
+      }
+      25% {
+        transform: translate(-25%, 35%);
+      }
+      50% {
+        transform: translate(-30%, 0%);
+      }
+      25% {
+        transform: translate(-25%, 35%);
+      }
+      100% {
+        transform: translate(-10%, 52%);
+      }
+    }
+
+    @keyframes wave2 {
+      0% {
+        transform: translate(-10%, 45%);
+      }
+      25% {
+        transform: translate(-25%, 25%);
+      }
+      50% {
+        transform: translate(-30%, 10%);
+      }
+      25% {
+        transform: translate(-25%, 25%);
+      }
+      100% {
+        transform: translate(-10%, 45%);
+      }
+    }
+  }
+  @keyframes wave3 {
+    0% {
+      transform: translate(-10%, 38%);
+    }
+    25% {
+      transform: translate(-25%, 15%);
+    }
+    50% {
+      transform: translate(-50%, 0%);
+    }
+    25% {
+      transform: translate(-25%, 15%);
+    }
+    100% {
+      transform: translate(-10%, 38%);
+    }
+  }
+}
+
+.boat {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -10px;
+  left: 38%;
+}
